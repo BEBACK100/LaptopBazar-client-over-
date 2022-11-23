@@ -1,12 +1,15 @@
 
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import router from './Routes/Routes';
 
 function App() {
   return (
-    <div className="">
-      <h1>Laptop second hand bazar </h1>
-      <button className="btn btn-warning">Warning</button>
+    <div className='max-w-[1440px] mx-auto'>
+      <RouterProvider router={router}></RouterProvider>
+
     </div>
+
   );
 }
 
