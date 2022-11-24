@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 
 const Sliding = ({ slide }) => {
     const { image, previous, id, next } = slide
@@ -17,8 +17,9 @@ const Sliding = ({ slide }) => {
                 </div>
             </div>
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <Link href={`#slide${previous}`} className="btn btn-circle bg-green-400">❮</Link>
-                <Link href={`#slide${next}`} className="btn btn-circle bg-green-400">❯</Link>
+
+                <a href={`#slide${previous}`} className="btn btn-circle bg-green-400">❮</a>
+                <a href={`#slide${next}`} className="btn btn-circle bg-green-400">❯</a>
             </div>
         </div>
 
