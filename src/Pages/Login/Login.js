@@ -1,34 +1,51 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import img from '../../Pages/login.jpg'
+import glogo from '../google logo.png'
 
 const Login = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const { signIn, form } = useContext(AuthContext)
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
     const [loginError, setloginError] = useState('')
     const navigate = useNavigate;
     const location = useLocation;
     const from = location?.state?.from?.pathname || '/';
-    const onsubmit = data => {
+    const { signIn, poviderlogin } = useContext(AuthContext)
+    const googleprovider = new GoogleAuthProvider()
+    const handlegooglesignin = () => {
 
-        console.log(data);
-        signIn(data.email, data.password)
-
+        poviderlogin(googleprovider)
             .then(result => {
+                const user = result.user;
 
-                const user = result.user
+                console.log(user)
+            })
+            .catch(error => console.error(error))
+        reset()
+    }
+
+    const onsubmit = data => {
+        console.log(data);
+        setloginError('');
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
                 console.log(user);
-                navigate(from, { replace: true });
+                reset()
+                navigate('/')
+
+
             })
-        form.reset()
+
             .catch(error => {
-                console.log(error)
-                setloginError(error.message)
+                console.log(error.message)
+                setloginError(error.message);
+                reset()
 
-            })
-
+            });
     }
 
 
@@ -65,7 +82,11 @@ const Login = () => {
 
                         {loginError && <p className='text-red-400'>{loginError} </p>}
 
-                        <input className='bg-blue-500 w-full  mt-5 p-3' type="Submit" />
+                        <input className='bg-success rounded-2xl w-full  mt-5 p-3' type="Submit" />
+                        <button onClick={handlegooglesignin} className="btn btn-outline btn-wide mt-10 btn-success w-full">
+                            <img className='w-10 mr-3' src={glogo} alt="" />
+                            Login with Google</button>
+
                         <label className="label">
                             <Link to='/signup' className="label-text-alt link link-hover text-xl">If you don't have an account <span className='text-3xl text-success font-bold'>Sign up</span></Link>
                         </label>

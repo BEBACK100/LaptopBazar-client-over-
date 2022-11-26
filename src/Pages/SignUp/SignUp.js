@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigationType } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import img from '../login.jpg'
 
@@ -10,7 +10,7 @@ const SignUp = () => {
     const [signUperror, setsignUperror] = useState('')
     const [type, setType] = useState("password")
     const { handleSubmit, formState: { errors }, register } = useForm();
-    const navigate = useNavigationType();
+    const navigate = useNavigate();
 
     // const googleprovider = new GoogleAuthProvider
     const onSubmit = data => {
@@ -34,7 +34,9 @@ const SignUp = () => {
 
                 console.log(error)
                 setsignUperror(error.message)
+
             })
+        navigate('/')
     }
     const saveUser = (name, email) => {
         const user = { name, email };
@@ -49,8 +51,8 @@ const SignUp = () => {
             .then(data => {
                 console.log('saveUser', data);
 
+
             })
-        navigate('/')
     }
     return (
         <div className='grid sm:grid-cols-1 lg:grid-cols-2 mt-12'>

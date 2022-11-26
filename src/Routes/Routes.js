@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import AboutUs from "../Pages/About-Us/AboutUs";
 import Blog from "../Pages/Blog/Blog";
 import Catagory from "../Pages/Catagory/Catagory";
+import CatagoryDetails from "../Pages/Catagory/CatagoryDetails";
 import Errorpage from "../Pages/Errorpage/Errorpage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -20,11 +21,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/catagory/:id',
-                element: <Catagory></Catagory>
+                element: <CatagoryDetails></CatagoryDetails>,
+                loader: () => fetch('http://localhost:5000/allLaptop')
             },
             {
-                path: '/',
-                element: <Home></Home>
+                path: '/laptopdetails/:id',
+                element: <Catagory></Catagory>,
+                loader: ({ params }) => fetch(`http://localhost:5000/laptopdetails/${params.id}`)
             },
             {
                 path: '/blog',
