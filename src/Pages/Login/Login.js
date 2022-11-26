@@ -20,7 +20,7 @@ const Login = () => {
         poviderlogin(googleprovider)
             .then(result => {
                 const user = result.user;
-
+                navigate(from, { replace: true });
                 console.log(user)
             })
             .catch(error => console.error(error))
@@ -35,8 +35,6 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 reset()
-                navigate('/')
-
 
             })
 
@@ -46,6 +44,7 @@ const Login = () => {
                 reset()
 
             });
+        navigate(from, { replace: true });
     }
 
 

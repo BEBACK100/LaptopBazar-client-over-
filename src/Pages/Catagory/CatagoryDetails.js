@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import PickUpCard from '../PickUp/PickUpCard/PickUpCard';
 import DetailsCard from './DetailsCard';
 
 const CatagoryDetails = () => {
     const allLaptop = useLoaderData([])
+    const [laptopinfo, setLaptopinfo] = useState([])
     return (
         <div>
             <h1>All Laptop:{allLaptop.length} </h1>
@@ -13,10 +14,13 @@ const CatagoryDetails = () => {
                     allLaptop.map(laptop => <DetailsCard
                         key={laptop.id}
                         laptop={laptop}
+                        setLaptopinfo={setLaptopinfo}
                     ></DetailsCard>)
                 }
             </div>
-            <PickUpCard></PickUpCard>
+            <PickUpCard
+                laptopinfo={laptopinfo}
+            ></PickUpCard>
         </div>
     );
 };

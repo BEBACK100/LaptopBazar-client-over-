@@ -8,6 +8,7 @@ import Errorpage from "../Pages/Errorpage/Errorpage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/catagory/:id',
-                element: <CatagoryDetails></CatagoryDetails>,
+                element: <PrivateRoute><CatagoryDetails></CatagoryDetails></PrivateRoute>,
                 loader: () => fetch('http://localhost:5000/allLaptop')
             },
             {
