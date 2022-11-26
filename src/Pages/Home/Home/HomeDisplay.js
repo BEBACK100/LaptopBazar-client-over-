@@ -11,9 +11,7 @@ const HomeDisplay = () => {
         fetch('http://localhost:5000/homedisplay')
             .then(res => res.json())
             .then(data => setDisplay(data));
-        if (loading) {
-            return <Spinner></Spinner>
-        }
+
 
     })
 

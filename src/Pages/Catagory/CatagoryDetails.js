@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import PickUpCard from '../PickUp/PickUpCard/PickUpCard';
 import DetailsCard from './DetailsCard';
 
 const CatagoryDetails = () => {
@@ -15,6 +16,7 @@ const CatagoryDetails = () => {
                     ></DetailsCard>)
                 }
             </div>
+            <PickUpCard></PickUpCard>
         </div>
     );
 };
