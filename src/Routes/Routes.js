@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Dashboardlayot from "../Layout/Dashboardlayot";
 import Main from "../Layout/Main";
 import AboutUs from "../Pages/About-Us/AboutUs";
 import Blog from "../Pages/Blog/Blog";
@@ -7,6 +8,7 @@ import CatagoryDetails from "../Pages/Catagory/CatagoryDetails";
 import Errorpage from "../Pages/Errorpage/Errorpage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
+import Dashboard from "../Pages/PickUp/Dashboard/Dashboard";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 
@@ -23,12 +25,12 @@ const router = createBrowserRouter([
             {
                 path: '/catagory/:id',
                 element: <PrivateRoute><CatagoryDetails></CatagoryDetails></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/allLaptop')
+
             },
             {
                 path: '/laptopdetails/:id',
                 element: <Catagory></Catagory>,
-                loader: ({ params }) => fetch(`http://localhost:5000/laptopdetails/${params.id}`)
+
             },
             {
                 path: '/blog',
@@ -45,8 +47,18 @@ const router = createBrowserRouter([
             {
                 path: '/aboutUs',
                 element: <AboutUs></AboutUs>
-            },
-
+            }
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboardlayot></Dashboardlayot></PrivateRoute>,
+        errorElement: <Errorpage></Errorpage>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            }
         ]
     }
 ])

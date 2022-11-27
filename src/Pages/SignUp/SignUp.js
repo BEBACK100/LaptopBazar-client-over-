@@ -36,7 +36,7 @@ const SignUp = () => {
                 setsignUperror(error.message)
 
             })
-        navigate('/')
+
     }
     const saveUser = (name, email) => {
         const user = { name, email };
@@ -50,7 +50,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('saveUser', data);
-
+                navigate('/')
 
             })
     }
@@ -82,7 +82,7 @@ const SignUp = () => {
                             {
                                 required: 'password is required',
                                 minLength: { value: 6, message: 'Passsword must be six caractors' },
-                                pattern: { value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, message: 'Password must be Strong' }
+                                // pattern: { value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, message: 'Password must be Strong' }
 
                             })} className="input w-full text-3xl input-bordered" required />
                         <label className="label">

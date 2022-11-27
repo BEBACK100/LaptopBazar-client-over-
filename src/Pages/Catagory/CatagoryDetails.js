@@ -1,11 +1,27 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+
 import PickUpCard from '../PickUp/PickUpCard/PickUpCard';
+import Spinner from '../Shared/Loadding/Spinner';
 import DetailsCard from './DetailsCard';
 
 const CatagoryDetails = () => {
-    const allLaptop = useLoaderData([])
+
     const [laptopinfo, setLaptopinfo] = useState([])
+
+
+    const { data: allLaptop = [], refetch, isLoading } = useQuery({
+        queryKey: ['allLaptop'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/alldata`);
+            const data = await res.json();
+            return data
+        }
+    });
+
+    if (isLoading) {
+        return <Spinner></Spinner>
+    }
     return (
         <div>
             <h1>All Laptop:{allLaptop.length} </h1>
@@ -18,9 +34,14 @@ const CatagoryDetails = () => {
                     ></DetailsCard>)
                 }
             </div>
-            <PickUpCard
-                laptopinfo={laptopinfo}
-            ></PickUpCard>
+            {
+                laptopinfo &&
+                <PickUpCard
+                    refetch={refetch}
+                    laptopinfo={laptopinfo}
+                    setLaptopinfo={setLaptopinfo}
+                ></PickUpCard>
+            }
         </div>
     );
 };

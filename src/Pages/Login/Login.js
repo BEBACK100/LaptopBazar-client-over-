@@ -41,10 +41,11 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message)
                 setloginError(error.message);
+
                 reset()
 
             });
-        navigate(from, { replace: true });
+        navigate('/')
     }
 
 
