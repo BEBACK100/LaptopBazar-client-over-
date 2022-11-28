@@ -57,7 +57,7 @@ const SignUp = () => {
                 .then(res => res.json())
                 .then(data => {
                     getAccesstoken(email)
-                    navigate('/')
+
                 })
         }
 
@@ -69,8 +69,11 @@ const SignUp = () => {
             .then(data => {
                 if (data.accessToken) {
                     localStorage.setItem('accessToken', data.accessToken)
+
                 }
+
             })
+
     }
 
 

@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import UseToken from '../../Hook/UseToken';
 import img from '../../Pages/login.jpg'
 import glogo from '../google logo.png'
 
@@ -10,18 +11,25 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const [loginError, setloginError] = useState('')
+    const [loginUseremail, setLoginUseremail] = useState('')
+    const [token] = UseToken(loginUseremail)
     const navigate = useNavigate;
     const location = useLocation;
     const from = location?.state?.from?.pathname || '/';
     const { signIn, poviderlogin } = useContext(AuthContext)
     const googleprovider = new GoogleAuthProvider()
-    const handlegooglesignin = () => {
+
+    // if (token) {
+    //     navigate(from, { replace: true });
+    // }
+
+    const handlegooglesignin = (data) => {
 
         poviderlogin(googleprovider)
             .then(result => {
                 const user = result.user;
-                navigate(from, { replace: true });
                 console.log(user)
+                setLoginUseremail(data.email)
             })
             .catch(error => console.error(error))
         reset()
@@ -34,7 +42,8 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                reset()
+                setLoginUseremail(data.email)
+
 
             })
 
@@ -45,7 +54,7 @@ const Login = () => {
                 reset()
 
             });
-        navigate('/')
+
     }
 
 
