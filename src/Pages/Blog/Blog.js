@@ -43,23 +43,24 @@ const Blog = () => {
                 <div className="collapse w-80 mx-auto my-6 rounded-2xl">
                     <input type="checkbox" className="peer" />
                     <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content text-2xl">
-                        <h1><span className='text-3xl  font-bold'>Question(03):</span>o	What is the difference between javascript and NodeJS? </h1>
+                        <h1><span className='text-3xl  font-bold'>Question(03):</span>What is a unit test? Why should we write unit tests? </h1>
                     </div>
                     <div className="collapse-content bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">
                         <h1 className='mx-auto'>
-                            <span className='text-2xl text-yellow-100 font-bold'>Answer:</span>JavaScript is a simple programming language that can be used with any browser that has the JavaScript Engine installed. Node. js, on the other hand, is an interpreter or execution environment for the JavaScript programming language.
+                            <span className='text-2xl text-yellow-100 font-bold'>Answer:</span>Unit Testing is a type of software testing where individual units or components of a software are tested. The purpose is to validate that each unit of the software code performs as expected. Unit Testing is done during the development (coding phase) of an application by the developers. Unit Tests isolate a section of code and verify its correctness. A unit may be an individual function, method, procedure, module, or object.
+
+                            In SDLC, STLC, V Model, Unit testing is first level of testing done before integration testing. Unit testing is a WhiteBox testing technique that is usually performed by the developer. Though, in a practical world due to time crunch or reluctance of developers to tests, QA engineers also do unit testing.
                         </h1>
                     </div>
                 </div>
                 <div className="collapse w-80 mx-auto rounded-2xl mb-10">
                     <input type="checkbox" className="peer" />
                     <div className="collapse-title bg-gray-600 text-primary-content peer-checked:bg-lime-500 peer-checked:text-secondary-content text-2xl">
-                        <h1><span className='text-3xl  font-bold'>Question(04):</span>How does NodeJS handle multiple requests at the same time?</h1>
+                        <h1><span className='text-3xl  font-bold'>Question(04):</span>React vs. Angular vs. Vue?</h1>
                     </div>
                     <div className="collapse-content bg-orange-400 text-primary-content peer-checked:bg-indigo-800 peer-checked:text-secondary-content">
                         <h1 className='mx-auto'>
-                            <span className='text-2xl text-yellow-100 font-bold'>Answer:</span>How NodeJS handle multiple client requests? NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them.
-
+                            <span className='text-2xl text-yellow-100 font-bold'>Answer:</span>Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option.
                         </h1>
                     </div>
                 </div>
