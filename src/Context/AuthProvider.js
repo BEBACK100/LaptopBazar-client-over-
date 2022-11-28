@@ -19,8 +19,8 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, Provider)
     }
-    const updateUser = (userinfo) => {
-        return updateProfile(auth.currentuser, userinfo)
+    const updateUser = (userInfo) => {
+        return updateProfile(user, userInfo)
     }
 
     const logOut = () => {
@@ -29,14 +29,12 @@ const AuthProvider = ({ children }) => {
     }
 
 
-    // const googleSignin = (provider) => {
-    //     return signInWithPopup(auth, provider)
-    // }
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, curruntuser => {
             setLoading(false)
-            console.log('observer is observed');
+
             setUser(curruntuser)
         })
         return () => unsubscribe()
@@ -48,7 +46,8 @@ const AuthProvider = ({ children }) => {
         logOut,
         user,
         loading,
-        poviderlogin
+        poviderlogin,
+
 
     }
     return (

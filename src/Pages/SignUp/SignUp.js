@@ -1,34 +1,42 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+// import UseToken from '../../Hook/UseToken';
 import img from '../login.jpg'
 
 const SignUp = () => {
+    // const [createdUserEmail, setCreatedUserEmail] = useState('')
+    // const [token] = UseToken(createdUserEmail);
+
     const { createuser, updateUser } = useContext(AuthContext)
     const [signUperror, setsignUperror] = useState('')
     const [type, setType] = useState("password")
     const { handleSubmit, formState: { errors }, register } = useForm();
-    const navigate = useNavigate();
+    const navigate = useNavigate;
+    const location = useLocation;
+    const from = location?.state?.from?.pathname || '/';
 
     // const googleprovider = new GoogleAuthProvider
-    const onSubmit = data => {
-        console.log(data);
+    const handleSignUp = (data) => {
+        setsignUperror('');
         createuser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user)
                 toast('User Create Successfully')
-                const userinfo = {
-                    displayName: data.name
-                }
-                updateUser(userinfo)
-                    .then(() => {
-                        saveUser(data.name, data.email);
-                    })
+                const userInfo = {
+                    displayName: data.name,
 
-                    .catch(error => console.log(error))
+                }
+                console.log(userInfo);
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email)
+
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(error => {
 
@@ -36,31 +44,43 @@ const SignUp = () => {
                 setsignUperror(error.message)
 
             })
+        const saveUser = (name, email) => {
+            const user = { name, email };
+            console.log(user)
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    getAccesstoken(email)
+                    navigate('/')
+                })
+        }
 
     }
-    const saveUser = (name, email) => {
-        const user = { name, email };
-        fetch('http://localhost:5000/users', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
+
+    const getAccesstoken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
-                console.log('saveUser', data);
-                navigate('/')
-
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken)
+                }
             })
     }
+
+
     return (
         <div className='grid sm:grid-cols-1 lg:grid-cols-2 mt-12'>
             <div>
                 <img src={img} alt="" />
             </div>
             <div className="hero  text-3xl">
-                <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                <form onSubmit={handleSubmit(handleSignUp)} className="card-body">
                     <div className="form-control">
 
                         <div className="form-control ">

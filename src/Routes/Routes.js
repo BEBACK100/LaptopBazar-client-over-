@@ -8,8 +8,10 @@ import CatagoryDetails from "../Pages/Catagory/CatagoryDetails";
 import Errorpage from "../Pages/Errorpage/Errorpage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
+import Payment from "../Pages/Payment/Payment";
 import Dashboard from "../Pages/PickUp/Dashboard/Dashboard";
 import SignUp from "../Pages/SignUp/SignUp";
+import AdminRout from "./AdminRout/AdminRout";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -52,13 +54,20 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboardlayot></Dashboardlayot></PrivateRoute>,
+        element: <PrivateRoute><Dashboardlayot></Dashboardlayot> </PrivateRoute>,
         errorElement: <Errorpage></Errorpage>,
         children: [
             {
                 path: '/dashboard',
                 element: <Dashboard></Dashboard>
-            }
+            },
+
+            // {
+            //     path: '/dashboard/payment/:id',
+            //     element: <AdminRout><Payment></Payment> </AdminRout>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            // },
+
         ]
     }
 ])

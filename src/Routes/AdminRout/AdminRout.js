@@ -1,23 +1,12 @@
-import React, { useContext } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider';
-import UseAdmin from '../../Hook/UseAdmin';
-import Loading from '../../Pages/Shared/Loading/Loading';
 
-const AdminRout = ({ children }) => {
-    const { user, loading } = useContext(AuthContext);
-    const [isAdmin, isAdminLoading] = UseAdmin(user?.email);
-    const location = useLocation();
+import React from 'react';
 
-    if (loading || isAdminLoading) {
-        return <Loading></Loading>
-    }
+const AdminRout = () => {
+    return (
+        <div>
 
-    if (user && isAdmin) {
-        return children;
-    }
-
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+        </div>
+    );
 };
 
 export default AdminRout;

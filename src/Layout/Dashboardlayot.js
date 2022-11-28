@@ -6,7 +6,7 @@ import Navbar from '../Pages/Home/Navbar/Navbar';
 
 const Dashboardlayot = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = UseAdmin(user?.email)
+    // const [isAdmin] = UseAdmin(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -19,13 +19,13 @@ const Dashboardlayot = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-base-content">
                         <li><Link to="/dashboard">My Booking Chart</Link></li>
-                        {
+                        {/* {
                             isAdmin && <>
                                 <li><Link to="/dashboard/allusers">All users</Link></li>
                                 <li><Link to="/dashboard/adddoctor">Add A Doctor</Link></li>
                                 <li><Link to="/dashboard/managedoctors">Manage Doctors</Link></li>
                             </>
-                        }
+                        } */}
 
                     </ul>
 
