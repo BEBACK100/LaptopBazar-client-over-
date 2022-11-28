@@ -47,7 +47,7 @@ const SignUp = () => {
         const saveUser = (name, email) => {
             const user = { name, email };
             console.log(user)
-            fetch('http://localhost:5000/users', {
+            fetch('https://laptop-bazar-second-hand-server-assignment12-beback100.vercel.app/users', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -64,7 +64,7 @@ const SignUp = () => {
     }
 
     const getAccesstoken = email => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        fetch(`https://laptop-bazar-second-hand-server-assignment12-beback100.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.accessToken) {

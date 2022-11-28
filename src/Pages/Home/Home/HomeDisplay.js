@@ -8,7 +8,7 @@ const HomeDisplay = () => {
     const { loading } = useContext(AuthContext)
     const [display, setDisplay] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/homedisplay')
+        fetch('https://laptop-bazar-second-hand-server-assignment12-beback100.vercel.app/homedisplay')
             .then(res => res.json())
             .then(data => setDisplay(data));
 
