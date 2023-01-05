@@ -13,7 +13,7 @@ const CatagoryDetails = () => {
     const { data: allLaptop = [], refetch, isLoading } = useQuery({
         queryKey: ['allLaptop'],
         queryFn: async () => {
-            const res = await fetch(`https://laptop-bazar-second-hand-server-assignment12-beback100.vercel.app/alldata`);
+            const res = await fetch(`http://localhost:5000/alldata`);
             const data = await res.json();
             return data
         }

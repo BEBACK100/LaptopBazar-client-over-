@@ -13,16 +13,19 @@ const Login = () => {
     const [loginError, setloginError] = useState('')
     const [loginUseremail, setLoginUseremail] = useState('')
     const [token] = UseToken(loginUseremail)
-    const navigate = useNavigate;
+    const navigate = useNavigate();
     const location = useLocation;
-    const from = location?.state?.from?.pathname || '/';
+    const from = location?.state?.from?.pathname || ('/')
     const { signIn, poviderlogin } = useContext(AuthContext)
     const googleprovider = new GoogleAuthProvider()
 
-    // if (token) {
-    //     navigate(from, { replace: true });
-    // }
+    if (token) {
+        navigate(from, { replace: true });
+    }
 
+    // if (token) {
+    //     navigate('/');
+    // }
     const handlegooglesignin = (data) => {
 
         poviderlogin(googleprovider)
@@ -37,6 +40,7 @@ const Login = () => {
 
     const onsubmit = data => {
         console.log(data);
+        console.log('user login');
         setloginError('');
         signIn(data.email, data.password)
             .then(result => {
@@ -44,9 +48,8 @@ const Login = () => {
                 console.log(user);
                 setLoginUseremail(data.email)
 
-
+                navigate('/');
             })
-
             .catch(error => {
                 console.log(error.message)
                 setloginError(error.message);

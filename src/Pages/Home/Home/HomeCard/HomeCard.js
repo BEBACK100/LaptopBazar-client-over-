@@ -35,7 +35,7 @@ const HomeCard = () => {
     ]
     // const [display, setDisplay] = useState([]);
     // useEffect(() => {
-    //     fetch('https://laptop-bazar-second-hand-server-assignment12-beback100.vercel.app/homedisplay')
+    //     fetch('http://localhost:5000/homedisplay')
     //         .then(res => res.json())
     //         .then(data => setDisplay(data));
     // })

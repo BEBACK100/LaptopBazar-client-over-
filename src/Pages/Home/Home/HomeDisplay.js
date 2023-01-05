@@ -2,15 +2,20 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import Spinner from '../../Shared/Loadding/Spinner';
-import HomeCard from './HomeCard/HomeCard';
+
 
 const HomeDisplay = () => {
     const { loading } = useContext(AuthContext)
     const [display, setDisplay] = useState([]);
     useEffect(() => {
-        fetch('https://laptop-bazar-second-hand-server-assignment12-beback100.vercel.app/homedisplay')
+        fetch('http://localhost:5000/alldata')
             .then(res => res.json())
-            .then(data => setDisplay(data));
+            .then(data => {
+                if (loading) {
+                    setDisplay(data)
+                }
+                return <Spinner></Spinner>
+            });
 
 
     })

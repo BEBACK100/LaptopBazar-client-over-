@@ -9,7 +9,12 @@ import Errorpage from "../Pages/Errorpage/Errorpage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Payment from "../Pages/Payment/Payment";
-import Dashboard from "../Pages/PickUp/Dashboard/Dashboard";
+import AddProducts from "../Pages/PickUp/Dashboard/AddProducts";
+import Allusers from "../Pages/PickUp/Dashboard/Allusers/Allusers";
+import ManageProducts from "../Pages/PickUp/Dashboard/ManageProducts";
+import MyBookingLaptop from "../Pages/PickUp/Dashboard/MyBookingLaptop";
+
+import Welcome from "../Pages/PickUp/Dashboard/Welcome";
 import SignUp from "../Pages/SignUp/SignUp";
 import AdminRout from "./AdminRout/AdminRout";
 import PrivateRoute from "./PrivateRoute";
@@ -58,16 +63,31 @@ const router = createBrowserRouter([
         errorElement: <Errorpage></Errorpage>,
         children: [
             {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                path: '',
+                element: <Welcome></Welcome>
+            },
+            {
+                path: 'my-bookings',
+                element: <MyBookingLaptop></MyBookingLaptop>
+            },
+            {
+                path: '/dashboard/users',
+                element: <AdminRout><Allusers></Allusers></AdminRout>
             },
 
-            // {
-            //     path: '/dashboard/payment/:id',
-            //     element: <AdminRout><Payment></Payment> </AdminRout>,
-            //     loader: ({ params }) => fetch(`https://laptop-bazar-second-hand-server-assignment12-beback100.vercel.app/bookings/${params.id}`)
-            // },
-
+            {
+                path: '/dashboard/addproducts',
+                element: <AdminRout><AddProducts></AddProducts></AdminRout>
+            },
+            {
+                path: '/dashboard/manageproducts',
+                element: <AdminRout><ManageProducts></ManageProducts></AdminRout>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <AdminRout><Payment></Payment></AdminRout>,
+                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
+            }
         ]
     }
 ])
