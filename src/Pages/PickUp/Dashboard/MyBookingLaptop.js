@@ -30,12 +30,13 @@ const MyBookingLaptop = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>SL</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Laptop Model</th>
                             <th>Place</th>
                             <th>Phone</th>
+                            <th>Price</th>
                             <th>Payment</th>
                         </tr>
                     </thead>
@@ -48,6 +49,7 @@ const MyBookingLaptop = () => {
                                 <td>{booking.email}</td>
                                 <td>{booking.model}</td>
                                 <td>{booking.location}</td>
+                                <td>{booking.price} </td>
                                 <td>{booking.phone}</td>
                                 <td>
                                     {

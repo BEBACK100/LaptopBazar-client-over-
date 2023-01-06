@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider';
 
 const PickUpCard = ({ laptopinfo, setLaptopinfo, refetch }) => {
-    const { model, title, ResalePrice, location, } = laptopinfo;
+    const { model, title, price, location, } = laptopinfo;
 
     const { user } = useContext(AuthContext)
     const handleSubmit = event => {
@@ -69,7 +69,7 @@ const PickUpCard = ({ laptopinfo, setLaptopinfo, refetch }) => {
                     <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-3 mt-10 text-center'>
                         <h1>Model Number</h1>
                         <input type="text" name="model" readOnly value={model} className="input w-full text-2xl  input-bordered " />
-                        <input type="text" name="price" readOnly value={ResalePrice} className="input w-full input-bordered " />
+                        <input type="text" name="price" readOnly value={price} TK className="input w-full input-bordered " />
                         <h1>User Name</h1>
                         <input name="name" type="text" defaultValue={user?.displayName} readOnly placeholder="Your Name" className="input w-full input-bordered" />
                         <h1>User Email</h1>
