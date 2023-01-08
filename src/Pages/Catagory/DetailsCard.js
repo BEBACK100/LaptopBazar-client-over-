@@ -1,7 +1,12 @@
 import React from 'react';
 
 const DetailsCard = ({ laptop, setLaptopinfo }) => {
+<<<<<<< HEAD
     const { Image, title, location, descripation, orginalPrice, rating, model, price, Used, postedDate } = laptop;
+=======
+    const { Image, title, location, descripation, orginalPrice, rating, model,
+        price, Used, postedDate } = laptop;
+>>>>>>> def0b8145465f11f67f86be4d678e1e9d2f7fb9d
 
     return (
         <div className="card card-compact w-full h-full  ">

@@ -69,7 +69,11 @@ const PickUpCard = ({ laptopinfo, setLaptopinfo, refetch }) => {
                     <form onSubmit={handleSubmit} className='grid grid-cols-1 gap-3 mt-10 text-center'>
                         <h1>Model Number</h1>
                         <input type="text" name="model" readOnly value={model} className="input w-full text-2xl  input-bordered " />
+<<<<<<< HEAD
                         <input type="text" name="price" readOnly value={price} className="input w-full input-bordered " />
+=======
+                        <input type="text" name="price" readOnly value={price} TK className="input w-full input-bordered " />
+>>>>>>> def0b8145465f11f67f86be4d678e1e9d2f7fb9d
                         <h1>User Name</h1>
                         <input name="name" type="text" defaultValue={user?.displayName} placeholder="Your Name" className="input w-full input-bordered" />
                         <h1>User Email</h1>

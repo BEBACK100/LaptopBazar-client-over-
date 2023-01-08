@@ -86,7 +86,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <AdminRout><Payment></Payment></AdminRout>,
+<<<<<<< HEAD
                 loader: ({ params }) => fetch(`https://laptop-bazar-second-hand-server-assignment12.vercel.app/bookings/${params.id}`)
+=======
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+>>>>>>> def0b8145465f11f67f86be4d678e1e9d2f7fb9d
             }
         ]
     }
