@@ -29,7 +29,7 @@ const PickUpCard = ({ laptopinfo, setLaptopinfo, refetch }) => {
 
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://laptop-bazar-second-hand-server-assignment12.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -51,7 +51,7 @@ const SignUp = () => {
     const saveUser = (Name, email) => {
         const user = { Name, email };
         console.log(user);
-        fetch('http://localhost:5000/users', {
+        fetch('https://laptop-bazar-second-hand-server-assignment12.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

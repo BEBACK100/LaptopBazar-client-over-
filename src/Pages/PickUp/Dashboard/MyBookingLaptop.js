@@ -8,7 +8,7 @@ const MyBookingLaptop = () => {
     const { user } = useContext(AuthContext);
 
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    const url = `https://laptop-bazar-second-hand-server-assignment12.vercel.app/bookings?email=${user?.email}`;
 
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -60,7 +60,7 @@ const MyBookingLaptop = () => {
                                         </Link>
                                     }
                                     {
-                                        booking.price && booking.paid && <span className='text-green-500'>Paid</span>
+                                        booking.price && booking.paid && <span className='text-green-500 bg-black px-2 rounded-xl'>Paid</span>
                                     }
                                 </td>
                             </tr>)

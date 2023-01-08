@@ -8,7 +8,7 @@ const HomeDisplay = () => {
     const { loading } = useContext(AuthContext)
     const [display, setDisplay] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/alldata')
+        fetch('https://laptop-bazar-second-hand-server-assignment12.vercel.app/alldata')
             .then(res => res.json())
             .then(data => {
                 if (loading) {
