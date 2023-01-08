@@ -15,7 +15,7 @@ const Dashboardlayot = () => {
                 <div className='mt-16 pt-16 z-0'>
                     <Sidebar />
                 </div>
-                <div className='flex-1 md:ml-64'>
+                <div className='flex-1 md:ml-64 pl-16'>
 
                     <Outlet></Outlet>
                     <div>

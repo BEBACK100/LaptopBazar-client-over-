@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import UseToken from '../../Hook/UseToken';
+
 import img from '../../Pages/login.jpg'
 import glogo from '../google logo.png'
 
@@ -40,7 +41,7 @@ const Login = () => {
 
     const onsubmit = data => {
         console.log(data);
-        console.log('user login');
+        // console.log('user login');
         setloginError('');
         signIn(data.email, data.password)
             .then(result => {
@@ -48,7 +49,7 @@ const Login = () => {
                 console.log(user);
                 setLoginUseremail(data.email)
 
-                navigate('/');
+
             })
             .catch(error => {
                 console.log(error.message)

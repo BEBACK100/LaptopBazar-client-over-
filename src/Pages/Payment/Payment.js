@@ -1,27 +1,36 @@
-import loadStripe from "load-stripe";
+
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 import { useLoaderData, useNavigation } from "react-router-dom";
+
 import Spinner from "../Shared/Loadding/Spinner";
+import CheckOutform from "./CheckOutform";
 
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK)
+console.log(stripePromise);
 
 const Payment = () => {
     const booking = useLoaderData();
+
     const navigation = useNavigation();
-    const { treatment, price, appointmentDate, slot } = booking;
+    const { model, price, name, email, phone, location } = booking;
     if (navigation.state === "loading") {
         return <Spinner></Spinner>
     }
     return (
-        <div>
-            <h3 className="text-3xl">Payment for {treatment}</h3>
-            <p className="text-xl">Please pay <strong>${price}</strong> for your appointment on {appointmentDate} at {slot}</p>
-            <div className='w-96 my-12'>
-                {/* <Elements stripe={stripePromise}>
-                    <CheckoutForm
+        <div className="text-center">
+            <h3 className="text-3xl">Payment for {model}</h3>
+            <p className="text-xl">Please pay <strong>${price}</strong> for your {name} laptop and take from {location}</p>
+            <div className='w-96 my-16'>
+                <Elements stripe={stripePromise}>
+                    <CheckOutform
                         booking={booking}
                     />
-                </Elements> */}
+
+                </Elements>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DetailsCard = ({ laptop, setLaptopinfo }) => {
-    const { Image, title, location, descripation, orginalPrice, rating, model, ResalePrice, Used, postedDate } = laptop;
+    const { Image, title, location, descripation, orginalPrice, rating, model, price, Used, postedDate } = laptop;
 
     return (
         <div className="card card-compact w-full h-full  ">
@@ -18,7 +18,7 @@ const DetailsCard = ({ laptop, setLaptopinfo }) => {
                 <p><span className='text-2xl text-success'>Descripation:</span> {descripation} </p>
                 <div className='flex justify-between'>
                     <div>
-                        <h1 className='text-green-600 font-bold'>Resale Price :<span className='text-success font-bold'>{ResalePrice}TK</span> </h1>
+                        <h1 className='text-green-600 font-bold'>Resale Price :<span className='text-success font-bold'>{price}TK</span> </h1>
                         <h1 className='text-green-600 font-bold'>Original Price :<span className='text-success font-blod'>{orginalPrice}TK</span></h1>
 
                     </div>
