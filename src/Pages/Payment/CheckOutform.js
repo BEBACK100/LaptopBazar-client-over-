@@ -71,6 +71,7 @@ const CheckOutform = ({ booking }) => {
             setSuccess('Congrats!!Your Payment is Completed')
             setTransectionId(paymentIntent.id)
             console.log('card info', card)
+
             //Store payment information in database
             const payment = {
                 price,
